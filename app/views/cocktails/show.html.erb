@@ -1,6 +1,27 @@
-<h1>The cocktail you choose is : <strong><%= @cocktail.name.upcase %></strong></h1>
+<h1><strong><%= @cocktail.name.upcase %></strong></h1>
 
-<h3>Here is a list of the ingredients used for that cocktail :</h3>
+<!-- This is a specific way to access the ingredient name by calling .ingredients on @cocktail -->
+<!-- but, we won't be able to access the description since it is stored in dose. -->
+<!-- <ul>
+  <#% @cocktail.ingredients.each do |ingredient| %>
+    <li><%#= ingredient.name.capitalize %></li>
+  <#% end %>
+</ul> -->
+
+<!-- Here is another way to be able to display both the description and the ingredient, by accessing -->
+<!-- the DOSES that associate both the cocktails and the ingredients -->
 <ul>
-  <%#= @cocktail.ingredients %>
+  <% @cocktail.doses.each do |dose| %>
+      <!-- the condition here will display the ingredients only if they exist for a certain cocktail -->
+      <% if dose.description.present? %>
+        <li>
+        <%= dose.description %>
+        <%= dose.ingredient.name.capitalize %>
+        <%= link_to "remove", dose_path(dose), method: :delete %>
+        </li>
+      <% end %>
+  <% end %>
 </ul>
+
+<p><%= link_to "Add an ingredient to this cocktail", new_cocktail_dose_path(@cocktail) %></p>
+<p><%= link_to "Back", root_path %></p>

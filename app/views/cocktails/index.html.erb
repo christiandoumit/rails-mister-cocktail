@@ -1,12 +1,21 @@
-<h1><strong>THE AVAILABLE COCKTAILS</strong></h1>
+<div class="container">
+    <div class="row justify-content-center">
+      <h1><strong>THE AVAILABLE COCKTAILS</strong></h1>
+    </div>
 
-<ul>
-  <% @cocktails.each do |cocktail| %>
-    <p>
-      <li><%= link_to cocktail.name, cocktail_path(cocktail) %></li>
-    </p>
-  <% end %>
-</ul>
+    <div class="row justify-content-center">
+      <ul>
+        <% @cocktails.each do |cocktail| %>
+          <p>
+            <li><%= link_to cocktail.name, cocktail_path(cocktail) %></li>
+          </p>
+        <% end %>
+      </ul>
+    </div>
 
-<p><%= link_to "Add a cocktail", new_cocktail_path %></p>
-
+    <div class="row justify-content-center">
+      <div class="btn btn-primary">
+        <p><%= link_to "Add a cocktail", new_cocktail_path %></p>
+      </div>
+    </div>
+</div>

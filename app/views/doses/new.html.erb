@@ -1,0 +1,14 @@
+<h1>New Dose</h1>
+
+<!-- The Dose is nested in Cocktail, this is why, in order to be able to create a new dose that is -->
+<!-- associated with the specific cocktail, we have to first refer to that specific cocktail via -->
+<!-- calling @cocktail which is refering to the cocktail id in the controller, and then the @dose -->
+<!-- which is initiating the method new on the model Cocktail as we see it in the controller -->
+<%= simple_form_for([@cocktail, @dose]) do |f| %>
+  <%= f.input :description %>
+  <!-- To display a list of items where to choose an item, use collection: -->
+  <!-- Instead of f.input we could have used f.association and it is mainly about associating -->
+  <!-- this input form with a specific model, here the ingredient model, in order to act on it -->
+  <%= f.input :ingredient, collection: Ingredient.all %>
+  <%= f.submit %>
+<% end %>
