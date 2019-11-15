@@ -17,7 +17,7 @@
         <li>
         <%= dose.description %>
         <%= dose.ingredient.name.capitalize %>
-        <%= link_to "remove", dose_path(dose), method: :delete %>
+        <%= link_to "🗑", dose_path(dose), method: :delete %>
         </li>
       <% end %>
   <% end %>
